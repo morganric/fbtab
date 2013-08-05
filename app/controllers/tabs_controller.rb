@@ -17,12 +17,26 @@ class TabsController < ApplicationController
   # GET /tabs/1.json
   def show
 
-    if params[:si]
-      @tab = Tab.find(params[:signed_request])
-      @signed_request = params[:signed_request]
+    def base64_url_decode str
+       encoded_str = str.gsub('-','+').gsub('_','/')
+       encoded_str += '=' while !(encoded_str.size % 4).zero?
+       Base64.decode64(encoded_str)
+      end
+
+    def decode_data str
+     encoded_sig, payload = str.split('.')
+     data = ActiveSupport::JSON.decode base64_url_decode(payload)
+    end
+    
+
+    if params[:signed_request]
+      signed_request = params[:signed_request]
+      @signed_request = decode_data(signed_request)
+      @tab = Tab.find(@signed_request.app_data)
+
     else 
-      @tab = Tab.find(params[:id])
       @signed_request = "none"
+      @tab = Tab.find(params[:id])
     end
 
     respond_to do |format|
