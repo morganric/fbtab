@@ -15,6 +15,7 @@ class TabsController < ApplicationController
   # GET /tabs/1.json
   def show
     @tab = Tab.find(params[:id])
+    @p = params[:app_data]
 
     respond_to do |format|
       format.html # show.html.erb

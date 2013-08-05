@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Facebook Tab</h1>
+
 <p>
   <b>Name:</b>
   <%= @tab.name %>
@@ -15,6 +17,12 @@
   <%= @tab.content %>
 </p>
 
+<p>
+  <b>Content:</b>
+  <%= @p %>
+</p>
+
 
 <%= link_to 'Edit', edit_tab_path(@tab) %> |
 <%= link_to 'Back', tabs_path %>
+<%= link_to "Add #{ @tab.name } to your Facebook Page","https://www.facebook.com/dialog/pagetab?app_id=489815807777705&next=https://radiant-island-4482.herokuapp.com/tabs/&app_data=#{@tab.name}" %>
