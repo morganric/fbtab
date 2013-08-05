@@ -29,6 +29,7 @@ class TabsController < ApplicationController
     end
     
 
+
     if params[:signed_request]
       signed_request = params[:signed_request]
       @signed_request = decode_data(signed_request)
@@ -40,6 +41,8 @@ class TabsController < ApplicationController
       @tab = Tab.find(params[:id])
       @app_data = @signed_request
     end
+
+    @params = params
 
     respond_to do |format|
       format.html # show.html.erb
