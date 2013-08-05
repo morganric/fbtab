@@ -27,6 +27,7 @@ class TabsController < ApplicationController
      data = ActiveSupport::JSON.decode base64_url_decode(payload)
     end
     
+       @params = params
 
 
     if params[:signed_request]
@@ -38,10 +39,10 @@ class TabsController < ApplicationController
     else 
       @signed_request = "none"
       @tab = Tab.find(params[:id])
-      @app_data = @signed_request
+      @app_data = @params[:app_data]
     end
 
-    @params = params
+ 
 
     respond_to do |format|
       format.html # show.html.erb
