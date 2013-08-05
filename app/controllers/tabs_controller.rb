@@ -1,6 +1,9 @@
 class TabsController < ApplicationController
-does_facebook
+# does_facebook
   layout 'facebook'
+
+  after_filter :allow_iframe
+
   # GET /tabs
   # GET /tabs.json
   def index
@@ -16,6 +19,7 @@ does_facebook
   # GET /tabs/1.json
   def show
     @params = params
+    @signed_request = @params[:signed_request]
     @tab = Tab.find(params[:id])
 
     respond_to do |format|
@@ -83,5 +87,11 @@ does_facebook
       format.html { redirect_to tabs_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  
+  def allow_iframe
+    response.headers['X-Frame-Options'] = "ALLOW-FROM https://www.facebook.com"
   end
 end
