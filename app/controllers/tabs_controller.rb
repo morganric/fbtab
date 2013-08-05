@@ -1,5 +1,4 @@
 class TabsController < ApplicationController
- does_facebook
 
   layout 'facebook'
   # GET /tabs
