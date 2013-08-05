@@ -1,4 +1,7 @@
 Fbtab::Application.routes.draw do
+  resources :tabs
+
+
   authenticated :user do
     root :to => 'home#index'
   end
