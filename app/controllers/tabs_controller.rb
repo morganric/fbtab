@@ -17,12 +17,12 @@ class TabsController < ApplicationController
   # GET /tabs/1.json
   def show
 
-    if params[:app_data]
-      @tab = Tab.find(params[:app_data])
-      @app_data = params[:app_data]
+    if params[:si]
+      @tab = Tab.find(params[:signed_request])
+      @signed_request = params[:signed_request]
     else 
       @tab = Tab.find(params[:id])
-      @app_data = "none"
+      @signed_request = "none"
     end
 
     respond_to do |format|
