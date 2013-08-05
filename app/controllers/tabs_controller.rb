@@ -14,8 +14,24 @@ class TabsController < ApplicationController
   # GET /tabs/1
   # GET /tabs/1.json
   def show
+    def base64_url_decode str
+       encoded_str = str.gsub('-','+').gsub('_','/')
+       encoded_str += '=' while !(encoded_str.size % 4).zero?
+       Base64.decode64(encoded_str)
+      end
+
+    def decode_data str
+     encoded_sig, payload = str.split('.')
+     data = ActiveSupport::JSON.decode base64_url_decode(payload)
+    end
+
+    signed_request = params[:signed_request]
+    @signed_request = decode_data(signed_request)
+    @name = @signed_request.app_data
+
+
     @tab = Tab.find(params[:id])
-    @p = params[:app_data]
+    
 
     respond_to do |format|
       format.html # show.html.erb
