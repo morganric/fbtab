@@ -1,4 +1,5 @@
 class TabsController < ApplicationController
+  layout 'facebook'
   # GET /tabs
   # GET /tabs.json
   def index
