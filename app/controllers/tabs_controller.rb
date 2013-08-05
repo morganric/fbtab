@@ -17,14 +17,20 @@ class TabsController < ApplicationController
   # GET /tabs/1.json
   def show
 
-    @tab = Tab.find(params[:id])
-    @fb_params = params[:signed_request]
+    if params[:app_data]
+      @tab = Tab.find(params[:app_data])
+      @app_data = params[:app_data]
+    else 
+      @tab = Tab.find(params[:id])
+      @app_data = "none"
+    end
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @tab }
     end
   end
+
 
   # GET /tabs/new
   # GET /tabs/new.json
