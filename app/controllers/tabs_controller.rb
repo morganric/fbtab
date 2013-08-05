@@ -1,5 +1,5 @@
 class TabsController < ApplicationController
-
+does_facebook
   layout 'facebook'
   # GET /tabs
   # GET /tabs.json
@@ -15,34 +15,8 @@ class TabsController < ApplicationController
   # GET /tabs/1
   # GET /tabs/1.json
   def show
-
-    def base64_url_decode str
-       encoded_str = str.gsub('-','+').gsub('_','/')
-       encoded_str += '=' while !(encoded_str.size % 4).zero?
-       Base64.decode64(encoded_str)
-      end
-
-    def decode_data str
-     encoded_sig, payload = str.split('.')
-     data = ActiveSupport::JSON.decode base64_url_decode(payload)
-    end
-    
-       @params = params
-
-
-    if params[:signed_request]
-      signed_request = params[:signed_request]
-      @signed_request = decode_data(signed_request)
-      @tab = Tab.find(params[:id])
-      @app_data = @signed_request
-
-    else 
-      @signed_request = "none"
-      @tab = Tab.find(params[:id])
-      @app_data = @params[:app_data]
-    end
-
- 
+    @params = params
+    @tab = Tab.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

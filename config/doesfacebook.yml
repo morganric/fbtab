@@ -16,17 +16,17 @@ name_of_app:
   app_id: 489815807777705
   secret_key: 82e850fde7ac14a81c6ab2c64ffee153
   namespace: embzlntest 
-  callback_url: http://radiant-island-4482.herokuapp.com/tabs/
+  callback_url: http://emblzn.com/canvas/
   
 name_of_another_app:
   app_id: 489815807777705
   secret_key: 82e850fde7ac14a81c6ab2c64ffee153
   namespace: embzlntest
-  callback_url: http://radiant-island-4482.herokuapp.com/tabs/
+  callback_url: http://emblzn.com/canvas/
   
 name_of_production_app:
   app_id: 489815807777705
   secret_key: 82e850fde7ac14a81c6ab2c64ffee153
   namespace: embzlntest
-  callback_url: http://radiant-island-4482.herokuapp.com/tabs/
+  callback_url: http://emblzn.com/canvas/
   ssl_callback_url: https://radiant-island-4482.herokuapp.com/tabs/
