@@ -32,11 +32,13 @@ class TabsController < ApplicationController
     if params[:signed_request]
       signed_request = params[:signed_request]
       @signed_request = decode_data(signed_request)
-      @tab = Tab.find(@signed_request.app_data)
+      @tab = Tab.find(params[:id])
+      @app_data = @signed_request
 
     else 
       @signed_request = "none"
       @tab = Tab.find(params[:id])
+      @app_data = @signed_request
     end
 
     respond_to do |format|
