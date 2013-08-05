@@ -1,11 +1,11 @@
 class TabsController < ApplicationController
-  does_facebook
+ does_facebook
+
   layout 'facebook'
   # GET /tabs
   # GET /tabs.json
   def index
     @tabs = Tab.all
-    @fb_params = fb_params
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +18,7 @@ class TabsController < ApplicationController
   def show
 
     @tab = Tab.find(params[:id])
+    @fb_params = params[:signed_request]
 
     respond_to do |format|
       format.html # show.html.erb
