@@ -26,4 +26,4 @@
 
 <%= link_to 'Edit', edit_tab_path(@tab) %> |
 <%= link_to 'Back', tabs_path %>
-<%= link_to "Add #{ @tab.name } to your Facebook Page","https://www.facebook.com/dialog/pagetab?app_id=489815807777705&next=https://radiant-island-4482.herokuapp.com/tabs/&?app_data=#{@tab.id}" %>
+<%= link_to "Add #{ @tab.name } to your Facebook Page","https://www.facebook.com/dialog/pagetab?app_id=489815807777705&next=https://radiant-island-4482.herokuapp.com/tabs/#{@tab.id}" %>
