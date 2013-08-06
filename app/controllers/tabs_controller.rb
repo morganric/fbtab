@@ -6,7 +6,7 @@ class TabsController < ApplicationController
   # GET /tabs.json
   def index
 
-    @facebook = true
+    @facebook = false
     @tabs = Tab.all
     # @tab = Tab.first
 
