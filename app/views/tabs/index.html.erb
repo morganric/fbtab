@@ -1,4 +1,4 @@
-<% if @tabs %>
+<% if @facebook == false %>
 
 <h1>Listing tabs</h1>
 
@@ -30,11 +30,13 @@
 <%= link_to 'New Tab', new_tab_path %>
 
 <% end %>
+
 <br/>
 
-<%= @facebook %>
+<p>Facebook: <%= @facebook %></p>
 
 <br/> 
+
 <% if @facebook == true %>
 
 <h2>Facbook </h2>
