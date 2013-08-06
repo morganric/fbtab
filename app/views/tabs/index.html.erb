@@ -33,35 +33,25 @@
 
 <br/>
 
-<p>Facebook: <%= @facebook %></p>
+<!-- <p>Facebook: <%= @facebook %></p> -->
 
 <br/> 
 
 <% if @facebook == true %>
 
-<h2>Facbook Tab</h2>
+<section class="span8">
 
-<p>
-  <b>Name:</b>
-  <%= @tab.name %>
-</p>
-
-<p>
-  <b>Title:</b>
+<h2>
   <%= @tab.title %>
-</p>
+</h2>
 
-<p>
-  <b>Content:</b>
   <%= @tab.content %>
-</p>
+</section>
 
-<p>
-  <b>FB PAGE ID:</b>
-  <%= @tab.fb_page_id %>
-</p>
+<span class="pull-right"><%= link_to "Add #{ @tab.name } to your Facebook Page","https://www.facebook.com/dialog/pagetab?app_id=489815807777705&next=https://radiant-island-4482.herokuapp.com/tabs/&app_data=#{@tab.id}", :class => "btn" %></span>
 
-<p>
+
+<!-- <p>
   <b>RG:</b>
 <%= @rg %>
 </p>
@@ -74,6 +64,6 @@
 <p>   
   <b>Current FB Page ID</b>
 <%= @request_id %>
-</p>
+</p> -->
 
 <% end %>
