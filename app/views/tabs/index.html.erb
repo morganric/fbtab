@@ -30,8 +30,12 @@
 <%= link_to 'New Tab', new_tab_path %>
 
 <% end %>
+<br/>
 
-<br />
+<%= @facebook %>
+
+<br/> 
+<% if @facebook == true %>
 
 <h2>Facbook </h2>
 
@@ -49,3 +53,5 @@
   <b>Current FB Page ID</b>
 <%= @parsed_request[:page][:id] %>
 </p>
+
+<% end %>
