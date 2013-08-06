@@ -38,19 +38,10 @@ class TabsController < ApplicationController
       @sr = @oauth.parse_signed_request(params["signed_request"])  
     end
 
-     def base64_url_decode str
-     encoded_str = str.gsub('-','+').gsub('_','/')
-     encoded_str += '=' while !(encoded_str.size % 4).zero?
-     Base64.decode64(encoded_str)
+     @rg = RestGraph.new( :app_id => 489815807777705, :secret => "82e850fde7ac14a81c6ab2c64ffee153")
+    if params["signed_request"]
+      @parsed_request = @rg.parse_signed_request!(params["signed_request"])
     end
-
-    def decode_data str
-     encoded_sig, payload = str.split('.')
-     data = ActiveSupport::JSON.decode base64_url_decode(payload)
-    end
-
-    signed_request = params[:signed_request]
-    @signed_request = decode_data(signed_request)
 
    
 
