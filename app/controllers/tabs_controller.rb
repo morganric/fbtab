@@ -8,17 +8,19 @@ class TabsController < ApplicationController
 
     @facebook = false
     @tabs = Tab.all
+    # @tab = Tab.first
 
     @rg = RestGraph.new( :app_id => 489815807777705, :secret => "82e850fde7ac14a81c6ab2c64ffee153")
+    
     if params["signed_request"]
       @facebook = true
       @parsed_request = @rg.parse_signed_request!(params["signed_request"])
       # @app_data = @parsed_request[:app_data]
       # @page_id = @parsed_request[:page][:id]
-      @request_id = params["signed_request"]["page"]["id"]
-      # @tab = Tab.where(:fb_page_id => @request_id )
-      @tab = Tab.find(params[1])
+      @request_id = @parsed_request["page"]["id"]
     end
+
+    @tab = Tab.where(:fb_page_id => @request_id )
 
     respond_to do |format|
       format.html # index.html.erb
