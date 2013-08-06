@@ -5,13 +5,17 @@ class TabsController < ApplicationController
   # GET /tabs
   # GET /tabs.json
   def index
-    @tabs = Tab.all
+
+
+   
 
     @rg = RestGraph.new( :app_id => 489815807777705, :secret => "82e850fde7ac14a81c6ab2c64ffee153")
     if params["signed_request"]
       @parsed_request = @rg.parse_signed_request!(params["signed_request"])
       # @app_data = @parsed_request[:app_data]
-      # @page_id = @parsed_request[:page][:id]
+      @page_id = @parsed_request[:page][:id]
+    else
+       @tabs = Tab.all
     end
 
     respond_to do |format|
