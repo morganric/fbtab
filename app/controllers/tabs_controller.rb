@@ -7,6 +7,12 @@ class TabsController < ApplicationController
   def index
     @tabs = Tab.all
 
+
+    @rg = RestGraph.new( :app_id => 489815807777705, :secret => "82e850fde7ac14a81c6ab2c64ffee153")
+    if params["signed_request"]
+      @parsed_request = @rg.parse_signed_request!(params["signed_request"])
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tabs }
@@ -25,9 +31,11 @@ class TabsController < ApplicationController
     @request = params[:request]
     @signed_request = @params[:signed_request]  
     @oauth = Koala::Facebook::OAuth.new(489815807777705, "82e850fde7ac14a81c6ab2c64ffee153") # example secret is 'secret', app ID doesn't matter
-      
+
+
     if signed_request = @params[:signed_request]
       @data = @oauth.parse_signed_request(signed_request)
+      @sr = @oauth.parse_signed_request(params["signed_request"])  
     end
    
 

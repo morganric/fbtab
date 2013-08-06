@@ -2,6 +2,14 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '3.2.13'
 
+gem "faraday"
+gem "koala", "~> 1.7.0rc1"
+gem "fb_graph"
+gem "doesfacebook"
+gem "rest-client"
+gem "rest-graph"
+
+
 group :production, :staging do
   gem "pg"
 end
@@ -47,9 +55,3 @@ group :test do
   gem 'email_spec'
   gem 'launchy'
 end
-
-gem "faraday"
-gem "koala", "~> 1.7.0rc1"
-gem "fb_graph"
-gem "doesfacebook"
-
