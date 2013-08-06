@@ -18,8 +18,18 @@ class TabsController < ApplicationController
   # GET /tabs/1
   # GET /tabs/1.json
   def show
+
+
+    # @graph = Koala::Facebook::API.new(oauth_access_token)
     @params = params
-    @signed_request = @params[:signed_request]
+
+    if @params[:signed_request] !=   nil
+      @signed_request = @params[:signed_request]
+      signed_request = @params[:signed_request]
+      @oauth = Koala::Facebook::OAuth.new(489815807777705, "82e850fde7ac14a81c6ab2c64ffee153") # example secret is 'secret', app ID doesn't matter
+      @data = @oauth.parse_signed_request(signed_request)
+    end
+
     @tab = Tab.find(params[:id])
 
     respond_to do |format|

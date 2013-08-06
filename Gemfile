@@ -48,4 +48,8 @@ group :test do
   gem 'launchy'
 end
 
+gem "faraday"
+gem "koala", "~> 1.7.0rc1"
+gem "fb_graph"
 gem "doesfacebook"
+
