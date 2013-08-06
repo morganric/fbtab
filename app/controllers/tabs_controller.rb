@@ -24,7 +24,7 @@ class TabsController < ApplicationController
   def show
 
     @tab = Tab.find(params[:id])
-    @graph = Koala::Facebook::API.new("CAAG9fCE6W6kBABWUyHxKkxwy33mWNSpZBSjzO4DD9L4PMbSDCtWkMlVmZA0RlgltU7gYOz1PXSZAc1rFCmhVJtu7EFJrLZBZBKovNrPJgBQbfI2ZCESvNdKQuEpZBZAY7HluzICEpO9JxjQ3zhCuurhkPBAzxdIBqJ6euZCIAZAdDjmZABFMWEdRY2GZAYrKN9QIlgPYLIHFOm512AZDZD")
+    @graph = Koala::Facebook::API.new("CAAG9fCE6W6kBAMLEyRb2vMPLSweauJvQGo3ciYDcsx8nRoizUrAyShsok0VjQbTMZA2dKiGSpV8y9YlTowlfEH0FLVNcrtnSvfZAOKq7S4YIVqGZBum7M1EwqiFPdZAa86VKTn93LJD4shPJcdtmalPXc6c8rYE15SsevQUkDjl2yIcQZBlBrdH3YxwnMUHN4JVRpwnUMNQZDZD")
     @profile = @graph.get_object("me")
     @params = params
 
