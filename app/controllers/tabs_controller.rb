@@ -2,8 +2,6 @@ class TabsController < ApplicationController
 # does_facebook
   layout 'facebook'
 
-  after_filter :allow_iframe
-
   # GET /tabs
   # GET /tabs.json
   def index
@@ -99,9 +97,4 @@ class TabsController < ApplicationController
     end
   end
 
-  private
-  
-  def allow_iframe
-    response.headers['X-Frame-Options'] = "ALLOW-FROM https://www.facebook.com"
-  end
 end

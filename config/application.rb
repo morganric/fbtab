@@ -74,10 +74,7 @@ module Fbtab
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
-
-    # tgnrjgnrj
-     config.gem "koala" 
+    config.assets.version = '1.0' 
 
   end
 end
