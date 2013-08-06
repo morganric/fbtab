@@ -7,12 +7,11 @@ class TabsController < ApplicationController
   def index
     @tabs = Tab.all
 
-
     @rg = RestGraph.new( :app_id => 489815807777705, :secret => "82e850fde7ac14a81c6ab2c64ffee153")
     if params["signed_request"]
       @parsed_request = @rg.parse_signed_request!(params["signed_request"])
-      @app_data = @parsed_request[:app_data]
-      @page_id = @parsed_request[:page][:id]
+      # @app_data = @parsed_request[:app_data]
+      # @page_id = @parsed_request[:page][:id]
     end
 
     respond_to do |format|
@@ -26,15 +25,15 @@ class TabsController < ApplicationController
   def show
 
     @tab = Tab.find(params[:id])
-    @graph = Koala::Facebook::API.new("CAAG9fCE6W6kBAMLEyRb2vMPLSweauJvQGo3ciYDcsx8nRoizUrAyShsok0VjQbTMZA2dKiGSpV8y9YlTowlfEH0FLVNcrtnSvfZAOKq7S4YIVqGZBum7M1EwqiFPdZAa86VKTn93LJD4shPJcdtmalPXc6c8rYE15SsevQUkDjl2yIcQZBlBrdH3YxwnMUHN4JVRpwnUMNQZDZD")
-    @profile = @graph.get_object("me")
+    # @graph = Koala::Facebook::API.new("CAAG9fCE6W6kBAMLEyRb2vMPLSweauJvQGo3ciYDcsx8nRoizUrAyShsok0VjQbTMZA2dKiGSpV8y9YlTowlfEH0FLVNcrtnSvfZAOKq7S4YIVqGZBum7M1EwqiFPdZAa86VKTn93LJD4shPJcdtmalPXc6c8rYE15SsevQUkDjl2yIcQZBlBrdH3YxwnMUHN4JVRpwnUMNQZDZD")
+    # @profile = @graph.get_object("me")
     
 
     @rg = RestGraph.new( :app_id => 489815807777705, :secret => "82e850fde7ac14a81c6ab2c64ffee153")
     if params["signed_request"]
       @parsed_request = @rg.parse_signed_request!(params["signed_request"])
-      @app_data = @parsed_request[:app_data]
-      @page_id = @parsed_request[:page][:id]
+      # @app_data = @parsed_request[:app_data]
+      # @page_id = @parsed_request[:page][:id]
 
     end
 
