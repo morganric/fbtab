@@ -6,7 +6,7 @@ class TabsController < ApplicationController
   # GET /tabs.json
   def index
 
-    @facebook = false
+    @facebook = true
     @tabs = Tab.all
     # @tab = Tab.first
 
@@ -24,7 +24,7 @@ class TabsController < ApplicationController
     end
       
 
-    @tab = Tab.where(:fb_page_id => @request_id )
+    @tab = Tab.find_by_fb_page_id(@request_id)
 
     respond_to do |format|
       format.html # index.html.erb
