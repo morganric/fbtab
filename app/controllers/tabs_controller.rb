@@ -22,8 +22,7 @@ class TabsController < ApplicationController
       @parsed_request = "NO SIGNED REQUEST"
       @request_id = "204412169722012"
     end
-      
-
+ 
     @tab = Tab.find_by_fb_page_id(@request_id)
 
     respond_to do |format|
