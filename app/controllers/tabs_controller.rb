@@ -15,7 +15,8 @@ class TabsController < ApplicationController
       @parsed_request = @rg.parse_signed_request!(params["signed_request"])
       # @app_data = @parsed_request[:app_data]
       # @page_id = @parsed_request[:page][:id]
-      @tab = Tab.where.fb_page_id(params["signed_request"]["page"]["id"])
+      @request_id = params["signed_request"]["page"]["id"]
+      @tab = Tab.where(:fb_page_id => @request_id )
     end
 
     respond_to do |format|
