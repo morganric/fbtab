@@ -46,9 +46,6 @@
   <%= @tab.name %>
 </p>
 
-
-
-
 <p>
   <b>RG:</b>
 <%= @rg %>
@@ -61,7 +58,7 @@
 
 <p>   
   <b>Current FB Page ID</b>
-<%= @parsed_request["page"]["id"].to_i %>
+<%= @request_id %>
 </p>
 
 <% end %>

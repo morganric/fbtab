@@ -18,7 +18,11 @@ class TabsController < ApplicationController
       # @app_data = @parsed_request[:app_data]
       # @page_id = @parsed_request[:page][:id]
       @request_id = @parsed_request["page"]["id"]
+    else
+      @parsed_request = "NO SIGNED REQUEST"
+      @request_id = "204412169722012"
     end
+      
 
     @tab = Tab.where(:fb_page_id => @request_id )
 
