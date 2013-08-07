@@ -1,6 +1,8 @@
 Fbtab::Application.routes.draw do
   resources :tabs
 
+  match "/jssdk/" => "jssdk#index"
+
   authenticated :user do
     root :to => 'home#index'
   end
