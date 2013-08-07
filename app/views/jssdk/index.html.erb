@@ -38,9 +38,12 @@
           FB.login(function(response){
             if (response.authResponse) {
              console.log('Welcome!  Fetching your information.... ');
+
              FB.api('/me', function(response) {
                console.log('Good to see you, ' + response.name + '.');
+                $('#welcome').append(response.name);
              });
+
            } else {
              console.log('User cancelled login or did not fully authorize.');
            }
@@ -54,6 +57,7 @@
         });
 
         FB.getLoginStatus(function(response) {
+           $('#status').html("Login status: " + response.status );
             if (response.status === 'connected') {
               console.log('app connected');
               // the user is logged in and has authenticated your
@@ -70,8 +74,7 @@
               $('#user').append('<br/> expires in: ' + expiresIn);
               $('#user').append('<br/> signed request: ' + signedRequest);
               return uid; 
-
-
+             
             } else if (response.status === 'not_authorized') {
               // the user is logged in to Facebook, 
               // but has not authenticated your app
@@ -97,6 +100,7 @@
 <h2 id="me"></h2>
 
 <p id="user"></p>
+<p id="status"></p>
 
 <button id="getStarted" >Log in</button>
 <button id="logOut" >Logout</button>
