@@ -78,7 +78,8 @@
                 console.log(user.first_name);
                 console.log(user.last_name);
                 console.log(user.email);
-                $('#welcome').append(user.name);
+                $('#welcome').append('Hello ' + user.name);
+                $('#me').append('Email:' + user.email);
               });
 
             } else if (response.status === 'not_authorized') {
@@ -102,7 +103,7 @@
 </script>
 
 <h1>JS SDK App</h1>
-<h2 id="welcome">Hello, </h2>
+<h2 id="welcome"></h2>
 <h2 id="me"></h2>
 
 <p id="user"></p>
