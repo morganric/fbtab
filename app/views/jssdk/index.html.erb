@@ -42,7 +42,7 @@
            } else {
              console.log('User cancelled login or did not fully authorize.');
            }
-          });
+          }, {scope: 'email,user_likes'});
         });
 
         $("#logOut").on('click', function() {
@@ -58,15 +58,6 @@
 
               connecter=true;
 
-              FB.api('/me', function(user) {
-              console.log(user.name);
-              console.log(user.first_name);
-              console.log(user.last_name);
-              console.log(user.email);
-              $('#me').html('Name: ' + user.name);
-              });
-
-
               // the user is logged in and has authenticated your
               // app, and response.authResponse supplies
               // the user's ID, a valid access token, a signed
@@ -80,6 +71,15 @@
               $('#user').append('<br/> access token: ' + accessToken);
               $('#user').append('<br/> expires in: ' + expiresIn);
               $('#user').append('<br/> signed request: ' + signedRequest); 
+
+              FB.api('/me', function(user) {
+                console.log(user);
+                console.log(user.name);
+                console.log(user.first_name);
+                console.log(user.last_name);
+                console.log(user.email);
+                $('#me').html('Name: ' + user.name);
+              });
 
             } else if (response.status === 'not_authorized') {
               // the user is logged in to Facebook, 
