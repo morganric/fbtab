@@ -10,6 +10,21 @@
     });
 
     // Additional initialization code such as adding Event Listeners goes here
+
+    $(document).ready(function() {
+      $.ajaxSetup({ cache: true });
+      $.getScript('//connect.facebook.net/en_UK/all.js', function(){
+        FB.init({
+          appId: '213223128832848',
+          channelUrl: '//www.radiant-island-4482.herokuapp.com/channel.html',
+        });     
+        $('#loginbutton,#feedbutton').removeAttr('disabled');
+        FB.getLoginStatus(updateStatusCallback);
+      });
+    });
+
+
+    
   };
 
   // Load the SDK asynchronously
@@ -23,27 +38,7 @@
 
 //feed
 
-FB.ui(
-  {
-   method: 'feed',
-   name: 'The Facebook SDK for Javascript',
-   caption: 'Bringing Facebook to the desktop and mobile web',
-   description: (
-      'A small JavaScript library that allows you to harness ' +
-      'the power of Facebook, bringing the user\'s identity, ' +
-      'social graph and distribution power to your site.'
-   ),
-   link: 'https://developers.facebook.com/docs/reference/javascript/',
-   picture: 'http://www.fbrell.com/public/f8.jpg'
-  },
-  function(response) {
-    if (response && response.post_id) {
-      alert('Post was published.');
-    } else {
-      alert('Post was not published.');
-    }
-  }
-);
+
 
 $(document).ready(function() {
   $.ajaxSetup({ cache: true });
@@ -64,5 +59,5 @@ $(document).ready(function() {
 
 <button id="loginbutton" >Login with Facebook</button>
 
-<button id="feedbutton" >Share to wall</button>
+<button id="feedbutton" >Share to wall  </button>
 
