@@ -35,7 +35,12 @@
         $('#loginbutton,#feedbutton').removeAttr('disabled');
         $("#getStarted").on('click', function() {
 
-          FB.login(function(response){});
+          FB.login(function(response){
+            console.log(response);
+            response.authResponse;
+            var token = response.authResponse.accessToken;
+            console.log(response);
+          });
         });
       
       });
