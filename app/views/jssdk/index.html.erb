@@ -66,8 +66,8 @@
            });
 
         FB.api('/me', function(response) {
-          var username = response.name;
-          $('#welcome').append(username);
+          var username = response['name'];
+          $('#welcome').html('Hello, ' + username);
         });
       
       });
