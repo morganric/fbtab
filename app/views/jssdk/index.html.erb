@@ -24,7 +24,7 @@
     });
 
 
-    
+
   };
 
   // Load the SDK asynchronously
@@ -36,21 +36,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-//feed
 
-
-
-$(document).ready(function() {
-  $.ajaxSetup({ cache: true });
-  $.getScript('//connect.facebook.net/en_UK/all.js', function(){
-    FB.init({
-      appId: '213223128832848',
-      channelUrl: '//www.radiant-island-4482.herokuapp.com/channel.html',
-    });     
-    $('#loginbutton,#feedbutton').removeAttr('disabled');
-    FB.getLoginStatus(updateStatusCallback);
-  });
-});
 
 
 </script>
