@@ -110,6 +110,13 @@
               } );
 
 
+              FB.api('/me/picture', { type: 'large' }, function (response) {
+                  console.log(response);
+                  var image_url = response['data'].url;
+                  $('img').attr('src', image_url);
+              } );
+
+
 
             } else if (response.status === 'not_authorized') {
               // the user is logged in to Facebook, 
@@ -134,9 +141,12 @@
 <h1>JS SDK App</h1>
 <h2 id="welcome"></h2>
 <h2 id="me"></h2>
+<img class="thumbnail pull-right">
 
 <p id="user"></p>
+<h3>Feed</h3>
 <ul id="feed"></ul>
+<h3>Likes</h3>
 <ul id="likes"></ul>
 <p id="status"></p>
 
