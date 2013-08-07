@@ -83,11 +83,7 @@
                 $('#welcome').append('Hello ' + user.name);
                 $('#me').append('Email:' + user.email);
                 $('#me').append('<br/>Likes:' + user.likes);
-                // $('#me').append( function() {
-                //   for (i = 0; i < user.feed.length; i++) {
-                //     $('#feed').append(user.feed[i].message );
-                //   }
-                // });
+                
 
               });
 
@@ -97,6 +93,15 @@
 
               FB.api('/me/likes', function (response) {
                   console.log(response);
+              } );
+
+               FB.api('/me/feed',{ limit: 3 } , function (response) {
+                  console.log(response);
+                  $('#me').append( function() {
+                    for (i = 0; i < response.length; i++) {
+                      $('#feed').append(response[i].message);
+                    }
+                  });
               } );
 
 
