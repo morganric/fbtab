@@ -80,6 +80,7 @@
                 console.log(user.email);
                 $('#welcome').append('Hello ' + user.name);
                 $('#me').append('Email:' + user.email);
+                $('#me').append('<br/>Likes:' + user.likes);
               });
 
             } else if (response.status === 'not_authorized') {
