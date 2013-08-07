@@ -93,13 +93,17 @@
 
               FB.api('/me/likes', function (response) {
                   console.log(response);
+                  var likes = response;
+                    for (var i = 0; i < likes[0].length; i++) {
+                      $('ul#likes').append('<li>' + likes[0][i] + '</li>');
+                    }
               } );
 
                FB.api('/me/feed', 'get', { limit: 25 }   , function (response) {
                   console.log(response);
                   var feed = response;
-                    for (var i = 0; i < feed.length; i++) {
-                      $('ul#feed').append('<li>' + feed.data[i] + '</li>');
+                    for (var i = 0; i < feed[0].length; i++) {
+                      $('ul#feed').append('<li>' + feed[0][i] + '</li>');
                     }
               } );
 
@@ -131,6 +135,7 @@
 
 <p id="user"></p>
 <ul id="feed"></ul>
+<ul id="likes"></ul>
 <p id="status"></p>
 
 <button id="getStarted" >Log in</button>
