@@ -53,7 +53,7 @@
 
         FB.api('/me', function(reply) {
            console.log('Good to see you, ' + reply.name + '.');
-            $('#welcome').append(reply.name);
+            $('#welcome').append('This is you: ' + reply.name);
          });
 
         FB.getLoginStatus(function(response) {
@@ -72,10 +72,8 @@
               $('#user').html('user id:' + uid);
               $('#user').append('<br/> access token: ' + accessToken);
               $('#user').append('<br/> expires in: ' + expiresIn);
-              $('#user').append('<br/> signed request: ' + signedRequest);
-              return uid; 
+              $('#user').append('<br/> signed request: ' + signedRequest); 
               var sr = parse_signed_request(signedRequest);
-              return sr;
               $('#user').append('<br/> sr parsed: ' + sr);
              
             } else if (response.status === 'not_authorized') {
