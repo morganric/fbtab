@@ -66,8 +66,14 @@
            });
 
         FB.api('/me', function(response) {
-          var username = response['name'];
-          $('#welcome').html('Hello, ' + username);
+          if (response.authResponse) {
+            var username = response.name;
+            $('#welcome').html('Hello, ' + username);
+            console.log('Good to see you, ' + response.name + '.');
+          }
+          else {
+            console.log('User cancelled login or did not fully authorize.');
+          }
         });
       
       });
@@ -81,10 +87,10 @@
 </script>
 
 <h1>JS SDK App</h1>
-<h2 id="welcome">Hello,  </h2>
+<h2 id="welcome"></h2>
 
 <p id="user"></p>
 
-<button id="getStarted" >Get Started</button>
+<button id="getStarted" >Log in</button>
 <button id="logOut" >Logout</button>
 
