@@ -36,11 +36,14 @@
         $("#getStarted").on('click', function() {
 
           FB.login(function(response){
-            console.log(response);
-            response.authResponse;
-            var token = response.authResponse.accessToken;
-            console.log(response);
+            alert('Logged in');
           });
+
+          FB.logout(function(response){
+            alert('Logged out');
+          });
+
+
         });
       
       });
@@ -56,4 +59,5 @@
 <h1>JS SDK App</h1>
 
 <button id="getStarted" >Get Started</button>
+<button id="logOut" >Logout</button>
 
