@@ -58,9 +58,10 @@
               var expiresIn = response.authResponse.expiresIn;
               var signedRequest = response.authResponse.signedRequest;
               $('#user').html('user id:' + uid);
-              $('#user').append('access token: ' + accessToken);
-              $('#user').append('expires in: ' + expiresIn);
-              $('#user').append('signed request: ' + signedRequest);
+              $('#user').append('<br/> access token: ' + accessToken);
+              $('#user').append('<br/> expires in: ' + expiresIn);
+              $('#user').append('<br/> signed request: ' + signedRequest);
+              $('#user').append('<br/> response: ' + repsonse);
             } else if (response.status === 'not_authorized') {
               // the user is logged in to Facebook, 
               // but has not authenticated your app
@@ -72,8 +73,8 @@
         FB.api('/me', function(response) {
           if (response.authResponse) {
             var username = response.authResponse.signedRequest.name;
-            $('#welcome').html('Hello, ' + username);
-            console.log('Good to see you, ' + username + '.');
+            $('#welcome').html('Hello, ' + username + '.');
+            console.log('Good to see you, ' + userIDname + '.');
           }
           else {
             console.log('User cancelled login or did not fully authorize.');
@@ -95,6 +96,6 @@
 
 <p id="user"></p>
 
-<button id="getStarted" >Log <ins></ins></button>
+<button id="getStarted" >Log in></button>
 <button id="logOut" >Logout</button>
 
