@@ -1,4 +1,5 @@
 <div id="fb-root"></div>
+<script type="text/javascript" href="https://raw.github.com/diulama/js-facebook-signed-request/master/fb_signed_request.js"></script>
 <script>
   window.fbAsyncInit = function() {
     // init the FB JS SDK
@@ -73,6 +74,9 @@
               $('#user').append('<br/> expires in: ' + expiresIn);
               $('#user').append('<br/> signed request: ' + signedRequest);
               return uid; 
+              var sr = parse_signed_request(signedRequest);
+              return sr;
+              $('#user').append('<br/> sr parsed: ' + sr);
              
             } else if (response.status === 'not_authorized') {
               // the user is logged in to Facebook, 
