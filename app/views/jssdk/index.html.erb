@@ -51,11 +51,6 @@
             });
         });
 
-        FB.api('/me', function(reply) {
-           console.log('Good to see you, ' + reply.name + '.');
-            $('#welcome').append('This is you: ' + reply.name);
-         });
-
         FB.getLoginStatus(function(response) {
            $('#status').html("Login status: " + response.status );
             if (response.status === 'connected') {
@@ -68,7 +63,7 @@
               console.log(user.first_name);
               console.log(user.last_name);
               console.log(user.email);
-              $('#me').html('email:' + user.email);
+              $('#me').html('Name: ' + user.name);
               });
 
 
