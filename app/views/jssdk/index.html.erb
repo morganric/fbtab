@@ -64,6 +64,17 @@
               $('#user').append('<br/> signed request: ' + signedRequest);
               return uid;
 
+              FB.api('/me', function(user) {
+                if (user.authResponse) {
+                  var username = user.username;
+                  $('#user').html('user name: ' + username);
+                  console.log('Good to see you, ' + username + '.');
+                }
+                else {
+                  console.log('User cancelled login or did not fully authorize.');
+                }
+              });
+
 
             } else if (response.status === 'not_authorized') {
               // the user is logged in to Facebook, 
@@ -78,9 +89,9 @@
       
           FB.api('/me', function(me) {
             if (me.authResponse) {
-              var username = me.username;
-              $('#me').html('Hello, ' + username + '.' );
-              console.log('Good to see you, ' + username + '.');
+              var myName = me.username;
+              $('#me').append(myName);
+              console.log('Good to see you, ' + myName + '.');
             }
             else {
               console.log('User cancelled login or did not fully authorize.');
@@ -99,7 +110,7 @@
 </script>
 
 <h1>JS SDK App</h1>
-<h2 id="welcome"></h2>
+<h2 id="welcome">Hello, </h2>
 <h2 id="me"></h2>
 
 <p id="user"></p>
