@@ -81,7 +81,15 @@
                 $('#welcome').append('Hello ' + user.name);
                 $('#me').append('Email:' + user.email);
                 $('#me').append('<br/>Likes:' + user.likes);
+                $('#me').append( function() {
+                  for (i = 0; i < user.feed.length; i++) {
+                    $('#feed').append(user.feed[i].message);
+                  }
+                });
+
               });
+
+
 
             } else if (response.status === 'not_authorized') {
               // the user is logged in to Facebook, 
@@ -108,6 +116,7 @@
 <h2 id="me"></h2>
 
 <p id="user"></p>
+<p id="feed"></p>
 <p id="status"></p>
 
 <button id="getStarted" >Log in</button>
