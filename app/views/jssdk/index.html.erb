@@ -72,9 +72,9 @@
 
         FB.api('/me', function(response) {
           if (response.authResponse) {
-            var username = response.authResponse.signedRequest.name;
-            $('#welcome').html('Hello, ' + username + '.');
-            console.log('Good to see you, ' + userIDname + '.');
+            var username = response.username;
+            $('#welcome').html('Hello, ' + username + '.' );
+            console.log('Good to see you, ' + username + '.');
           }
           else {
             console.log('User cancelled login or did not fully authorize.');
