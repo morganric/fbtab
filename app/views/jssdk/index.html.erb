@@ -95,14 +95,12 @@
                   console.log(response);
               } );
 
-               FB.api('/me/feed', 'get', { limit: 25 } , function (response) {
+               FB.api('/me/feed', 'get', { limit: 25 }   , function (response) {
                   console.log(response);
                   var feed = response;
-                  $('#me').append( function() {
                     for (var i = 0; i < feed.length; i++) {
-                      $('#feed').append('<li>' + feed[i] + '</li>');
+                      $('ul#feed').append('<li>' + feed[i] + '</li>');
                     }
-                  });
               } );
 
 
