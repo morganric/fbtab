@@ -93,7 +93,7 @@
 
               FB.api('/me/likes', function (response) {
                   console.log(response);
-                  var likes = response[0];
+                  var likes = response['data'];
                     for (var i = 0; i < likes.length; i++) {
                       $('ul#likes').append('<li>' + likes[i].name + '</li>');
                     }
@@ -101,7 +101,7 @@
 
                FB.api('/me/feed', 'get', { limit: 25 }   , function (response) {
                   console.log(response);
-                  var feed = response[0];
+                  var feed = response['data'];
                     for (var i = 0; i < feed.length; i++) {
                       $('ul#feed').append('<li>' + feed[i].story + '</li>');
                     }
