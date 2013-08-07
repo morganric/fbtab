@@ -42,7 +42,7 @@
            } else {
              console.log('User cancelled login or did not fully authorize.');
            }
-          }, {scope: 'email,user_likes'});
+          }, {scope: 'email,user_likes'}  );
         });
 
         $("#logOut").on('click', function() {
@@ -78,7 +78,7 @@
                 console.log(user.first_name);
                 console.log(user.last_name);
                 console.log(user.email);
-                $('#me').html('Name: ' + user.name);
+                $('#welcome').append(user.name);
               });
 
             } else if (response.status === 'not_authorized') {
