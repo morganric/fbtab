@@ -61,24 +61,42 @@
               $('#user').append('<br/> access token: ' + accessToken);
               $('#user').append('<br/> expires in: ' + expiresIn);
               $('#user').append('<br/> signed request: ' + signedRequest);
+              return uid;
+
+
+            FB.api(uid, function(user) {
+              if (user.authResponse) {
+                var username = user.username;
+                $('#welcome').html('Hello, ' + username + '.' );
+                console.log('Good to see you, ' + username + '.');
+              }
+              else {
+                console.log('User cancelled login or did not fully authorize.');
+              }
+            });
+
             } else if (response.status === 'not_authorized') {
               // the user is logged in to Facebook, 
               // but has not authenticated your app
+              console.log('app not authorised');
             } else {
               // the user isn't logged in to Facebook.
+              console.log('not logged in to Facebook');
             }
            });
 
-        FB.api('/me', function(response) {
-          if (response.authResponse) {
-            var username = response.username;
-            $('#welcome').html('Hello, ' + username + '.' );
-            console.log('Good to see you, ' + username + '.');
-          }
-          else {
-            console.log('User cancelled login or did not fully authorize.');
-          }
-        });
+      
+          // FB.api('/me', function(response) {
+          //   if (response.authResponse) {
+          //     var me = response.username;
+          //     $('#welcome').html('Hello, ' + me + '.' );
+          //     console.log('Good to see you, ' + me + '.');
+          //   }
+          //   else {
+          //     console.log('User cancelled login or did not fully authorize.');
+          //   }
+          // });
+
       
       });
 
@@ -95,6 +113,6 @@
 
 <p id="user"></p>
 
-<button id="getStarted" >Log in></button>
+<button id="getStarted" >Log in</button>
 <button id="logOut" >Logout</button>
 
