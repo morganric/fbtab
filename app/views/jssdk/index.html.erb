@@ -113,7 +113,11 @@
               FB.api('/me/picture', { type: 'large' }, function (response) {
                   console.log(response);
                   var image_url = response['data'].url;
-                  $('img').attr('src', image_url);
+                  $('img#profile').attr('src', image_url);
+              } );
+
+              FB.api('/me/birthday', function (response) {
+                  console.log(response);
               } );
 
 
@@ -138,7 +142,7 @@
 
 </script>
 
-<h1>JS SDK App</h1><img class="thumbnail" />
+<h1>JS SDK App</h1><img id="profile" class="thumbnail" />
 <h2 id="welcome"></h2>
 <h2 id="me" class="hidden"></h2>
 
