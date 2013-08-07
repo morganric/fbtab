@@ -23,7 +23,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-$(document).ready(function() {
+
   $(document).on('fbload',  //  <---- HERE'S OUR CUSTOM EVENT BEING LISTENED FOR
     function(){
       $.ajaxSetup({ cache: true });
@@ -36,7 +36,7 @@ $(document).ready(function() {
         FB.getLog inStatus(updateStatusCallback);
       });
   });          
-});
+
 
 
 
