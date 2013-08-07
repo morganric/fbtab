@@ -60,6 +60,18 @@
            $('#status').html("Login status: " + response.status );
             if (response.status === 'connected') {
               console.log('app connected');
+
+              connecter=true;
+
+              FB.api('/me', function(user) {
+              console.log(user.name);
+              console.log(user.first_name);
+              console.log(user.last_name);
+              console.log(user.email);
+              $('#me').html('email:' + user.email);
+              });
+
+
               // the user is logged in and has authenticated your
               // app, and response.authResponse supplies
               // the user's ID, a valid access token, a signed
@@ -73,9 +85,7 @@
               $('#user').append('<br/> access token: ' + accessToken);
               $('#user').append('<br/> expires in: ' + expiresIn);
               $('#user').append('<br/> signed request: ' + signedRequest); 
-              var sr = parse_signed_request(signedRequest);
-              $('#user').append('<br/> sr parsed: ' + sr);
-             
+
             } else if (response.status === 'not_authorized') {
               // the user is logged in to Facebook, 
               // but has not authenticated your app
