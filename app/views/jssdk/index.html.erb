@@ -38,12 +38,6 @@
           FB.login(function(response){
             if (response.authResponse) {
              console.log('Welcome!  Fetching your information.... ');
-
-             FB.api('/me', function(response) {
-               console.log('Good to see you, ' + response.name + '.');
-                $('#welcome').append(response.name);
-             });
-
            } else {
              console.log('User cancelled login or did not fully authorize.');
            }
@@ -55,6 +49,11 @@
               alert('Logged out');
             });
         });
+
+        FB.api('/me', function(reply) {
+           console.log('Good to see you, ' + reply.name + '.');
+            $('#welcome').append(reply.name);
+         });
 
         FB.getLoginStatus(function(response) {
            $('#status').html("Login status: " + response.status );
