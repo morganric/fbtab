@@ -52,6 +52,8 @@
               // and signed request each expire
               var uid = response.authResponse.userID;
               var accessToken = response.authResponse.accessToken;
+              $('#user').html('user id:' + uid);
+              $('#user').append('access token:' + accessToken);
             } else if (response.status === 'not_authorized') {
               // the user is logged in to Facebook, 
               // but has not authenticated your app
@@ -74,6 +76,8 @@
 </script>
 
 <h1>JS SDK App</h1>
+
+<p id="user"></p>
 
 <button id="getStarted" >Get Started</button>
 <button id="logOut" >Logout</button>
