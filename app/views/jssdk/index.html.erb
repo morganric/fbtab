@@ -42,7 +42,7 @@
            } else {
              console.log('User cancelled login or did not fully authorize.');
            }
-          }, {scope: 'email,user_likes,read_stream'}  );
+          }, {scope: 'email,user_likes,read_stream, publish_stream'}  );
         });
 
         $("#logOut").on('click', function() {
@@ -72,7 +72,7 @@
               $('#user').append('<br/> expires in: ' + expiresIn);
               $('#user').append('<br/> signed request: ' + signedRequest); 
 
-              FB.api('/me', function(user) {
+              FB.api('/me', function (user) {
                 console.log(user);
                 console.log(user.name);
                 console.log(user.first_name);
@@ -90,6 +90,10 @@
                 });
 
               });
+
+              FB.api('/me/permissions', function (response) {
+                  console.log(response);
+              } );
 
 
 
