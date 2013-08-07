@@ -33,8 +33,14 @@
         //   channelUrl: '//www.radiant-island-4482.herokuapp.com/channel.html',
         // });     
         $('#loginbutton,#feedbutton').removeAttr('disabled');
-        FB.getLoginStatus(updateStatusCallback);  
+        $("#getStarted").on('click', function() {
+
+          FB.login(function(response){});
+        });
+      
       });
+
+
   });          
 
 
@@ -44,7 +50,5 @@
 
 <h1>JS SDK App</h1>
 
-<button id="loginbutton" >Login with Facebook</button>
-
-<button id="feedbutton" >Share to wall  </button>
+<button id="getStarted" >Get Started</button>
 
