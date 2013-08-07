@@ -39,11 +39,15 @@
             alert('Logged in');
           });
 
-          FB.logout(function(response){
-            alert('Logged out');
-          });
+        });
 
-          FB.getLoginStatus(function(response) {
+        $("#logOut").on('click', function() {
+          FB.logout(function(response){
+              alert('Logged out');
+            });
+        });
+
+        FB.getLoginStatus(function(response) {
             if (response.status === 'connected') {
               // the user is logged in and has authenticated your
               // app, and response.authResponse supplies
@@ -61,9 +65,6 @@
               // the user isn't logged in to Facebook.
             }
            });
-
-
-        });
       
       });
 
