@@ -86,16 +86,16 @@
            });
 
       
-          // FB.api('/me', function(response) {
-          //   if (response.authResponse) {
-          //     var me = response.username;
-          //     $('#welcome').html('Hello, ' + me + '.' );
-          //     console.log('Good to see you, ' + me + '.');
-          //   }
-          //   else {
-          //     console.log('User cancelled login or did not fully authorize.');
-          //   }
-          // });
+          FB.api('/me', function(response) {
+            if (response.authResponse) {
+              var me = response.username;
+              $('#me').html('Hello, ' + me + '.' );
+              console.log('Good to see you, ' + me + '.');
+            }
+            else {
+              console.log('User cancelled login or did not fully authorize.');
+            }
+          });
 
       
       });
@@ -110,6 +110,7 @@
 
 <h1>JS SDK App</h1>
 <h2 id="welcome"></h2>
+<h2 id="me"></h2>
 
 <p id="user"></p>
 
