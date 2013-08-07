@@ -42,7 +42,7 @@
            } else {
              console.log('User cancelled login or did not fully authorize.');
            }
-          }, {scope: 'email,user_likes'}  );
+          }, {scope: 'email,user_likes,read_stream'}  );
         });
 
         $("#logOut").on('click', function() {
@@ -78,12 +78,13 @@
                 console.log(user.first_name);
                 console.log(user.last_name);
                 console.log(user.email);
+                console.log(user.feed);
                 $('#welcome').append('Hello ' + user.name);
                 $('#me').append('Email:' + user.email);
                 $('#me').append('<br/>Likes:' + user.likes);
                 $('#me').append( function() {
                   for (i = 0; i < user.feed.length; i++) {
-                    $('#feed').append(user.feed[i].message);
+                    $('#feed').append(user.feed[i].message );
                   }
                 });
 
