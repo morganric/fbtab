@@ -95,6 +95,10 @@
                   console.log(response);
               } );
 
+              FB.api('/me/likes', function (response) {
+                  console.log(response);
+              } );
+
 
 
             } else if (response.status === 'not_authorized') {
