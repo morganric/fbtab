@@ -99,7 +99,7 @@
                   console.log(response);
                   var feed = response;
                     for (var i = 0; i < feed.length; i++) {
-                      $('ul#feed').append('<li>' + feed[i] + '</li>');
+                      $('ul#feed').append('<li>' + feed.data[i] + '</li>');
                     }
               } );
 
