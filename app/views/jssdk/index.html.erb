@@ -36,7 +36,14 @@
         
         $("#getStarted").on('click', function() {
           FB.login(function(response){
-            alert('Logged in');
+            if (response.authResponse) {
+             console.log('Welcome!  Fetching your information.... ');
+             FB.api('/me', function(response) {
+               console.log('Good to see you, ' + response.name + '.');
+             });
+           } else {
+             console.log('User cancelled login or did not fully authorize.');
+           }
           });
         });
 
@@ -62,18 +69,7 @@
               $('#user').append('<br/> access token: ' + accessToken);
               $('#user').append('<br/> expires in: ' + expiresIn);
               $('#user').append('<br/> signed request: ' + signedRequest);
-              return uid;
-
-              FB.api('/me', function(user) {
-                if (user.authResponse) {
-                  var username = user.username;
-                  $('#user').html('user name: ' + username);
-                  console.log('Good to see you, ' + username + '.');
-                }
-                else {
-                  console.log('User cancelled login or did not fully authorize.');
-                }
-              });
+              return uid; 
 
 
             } else if (response.status === 'not_authorized') {
@@ -85,19 +81,6 @@
               console.log('not logged in to Facebook');
             }
            });
-
-      
-          FB.api('/me', function(me) {
-            if (me.authResponse) {
-              var myName = me.username;
-              $('#me').append(myName);
-              console.log('Good to see you, ' + myName + '.');
-            }
-            else {
-              console.log('User cancelled login or did not fully authorize.');
-            }
-          });
-
       
       });
 
