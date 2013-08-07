@@ -95,7 +95,7 @@
                   console.log(response);
               } );
 
-               FB.api('/me/feed', function (response) {
+               FB.api('/me/feed', 'get', { limit: 25 } , function (response) {
                   console.log(response);
                   var feed = response;
                   $('#me').append( function() {
@@ -132,7 +132,7 @@
 <h2 id="me"></h2>
 
 <p id="user"></p>
-<ul id="feed"></p>
+<ul id="feed"></ul>
 <p id="status"></p>
 
 <button id="getStarted" >Log in</button>
