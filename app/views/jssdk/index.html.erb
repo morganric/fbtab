@@ -33,12 +33,11 @@
         //   channelUrl: '//www.radiant-island-4482.herokuapp.com/channel.html',
         // });     
         $('#loginbutton,#feedbutton').removeAttr('disabled');
+        
         $("#getStarted").on('click', function() {
-
           FB.login(function(response){
             alert('Logged in');
           });
-
         });
 
         $("#logOut").on('click', function() {
@@ -65,6 +64,11 @@
               // the user isn't logged in to Facebook.
             }
            });
+
+        FB.api('/me', function(response) {
+          var username = response.name;
+          $('#welcome').append(username);
+        });
       
       });
 
@@ -77,6 +81,7 @@
 </script>
 
 <h1>JS SDK App</h1>
+<h2 id="welcome">Hello,  </h2>
 
 <p id="user"></p>
 
