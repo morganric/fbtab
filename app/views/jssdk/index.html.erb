@@ -42,7 +42,7 @@
            } else {
              console.log('User cancelled login or did not fully authorize.');
            }
-          }, {scope: 'email,user_likes,read_stream, publish_stream,user_birthday'}  );
+          }, {scope: 'email,user_likes,read_stream,publish_stream,user_birthday'}  );
         });
 
         $("#logOut").on('click', function() {
@@ -84,8 +84,6 @@
                 $('#me').append('Email:' + user.email);
                 $('#me').append('<br/>Likes:' + user.likes);
                 $('#me').append('<br/>DOB:' + user.birthday);
-                $('#me').append('<br/>DOB:' + user.user_birthday);
-                
 
               });
 
@@ -118,11 +116,19 @@
                   $('img#profile').attr('src', image_url);
               } );
 
-              FB.api('/me/birthday', function (response) {
-                  console.log(response);
-              } );
-
-
+              $("#share").on('click', function() {
+                  FB.ui({
+                    method: 'feed',
+                    display: 'popup',
+                    link: 'https://developers.facebook.com/docs/reference/dialogs/',
+                    picture: 'http://fbrell.com/f8.jpg',
+                    name: 'Facebook Dialogs',
+                    caption: 'Reference Documentation',
+                    description: 'Using Dialogs to interact with people.'
+                  }, function(response){
+                    console.log(response);
+                  });
+              });
 
             } else if (response.status === 'not_authorized') {
               // the user is logged in to Facebook, 
@@ -147,6 +153,7 @@
 <h1>JS SDK App</h1><img id="profile" class="thumbnail" />
 <h2 id="welcome"></h2>
 <h2 id="me" class="hidden"></h2>
+<button id="share" >Share innit</button>
 
 
 <p id="user" class="hidden"></p>
