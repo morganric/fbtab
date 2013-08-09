@@ -1,6 +1,7 @@
 class TabsController < ApplicationController
 # does_facebook
   layout 'facebook'
+  require 'rest-graph'
 
   # GET /tabs
   # GET /tabs.json
@@ -11,7 +12,10 @@ class TabsController < ApplicationController
     # @tab = Tab.first
 
     @rg = RestGraph.new( :app_id => 489815807777705, :secret => "82e850fde7ac14a81c6ab2c64ffee153")
-    
+    @new_rg = RestGraph.new(:access_token => "CAACEdEose0cBAJ1Py3HiBsYnNVCYREpU8KOlCYR8mESKN3oz2CpWcP42XZBr0dsn2jrYKi1H7dMqMsfhvgHDDWTY5UkHYgZB2XnZB2nPpeEhl9ErTZCl9GZB4rCGT2HZCDKqaqJFdDMX5akbtZARKfuOBTeFdrHZA8essNAZCw0CcftnBvDZCgjAuO4GZB6gkA540mz2zqlGzQAkQZDZD")
+    @me = @new_rg.get('me')
+    @likes = @new_rg.get('me/likes')
+
     if params["signed_request"]
       @facebook = true
       @parsed_request = @rg.parse_signed_request!(params["signed_request"])
