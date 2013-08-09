@@ -8,6 +8,7 @@ gem "fb_graph"
 gem "doesfacebook"
 gem "rest-client"
 gem "rest-graph"
+gem "mixcloud"
 
 
 group :production, :staging do

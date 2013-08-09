@@ -4,3 +4,31 @@
 <% end %>
 
 <%= link_to 'Tabs', "/tabs/" %>
+
+<h3>Mxcloud</h3>
+
+<%= @mixcloud.username %>, 
+<%=  @mixcloud.cloudcast_count %>, 
+<%=  @mixcloud.following_count %>, 
+<%=  @mixcloud.follower_count %>, 
+<%=  @mixcloud.api_url %>, 
+<%=  @mixcloud.name %>, 
+<%=  @mixcloud.key %>, 
+<%=  @mixcloud.listen_count %>, 
+<%=  @mixcloud.favorite_count %>
+<%=  @mixcloud.followers_url %>
+
+<br/>
+<%= @cloudcasts_url  %>
+<br/>
+<%= @cloudcast  %>
+<br/>
+<!-- <h4>Search Results</h4>
+<ul>
+	<%# @results.each do |result| %>
+	<li><%#= result.name %></li>
+	<%# end %>
+</ul>
+<br/> -->
+
+

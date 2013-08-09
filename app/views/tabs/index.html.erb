@@ -33,6 +33,13 @@
 <section id="graph">
 
 <p>Hello, <%= @me['name'] %></p>
+<p>You like:
+<ul> 
+  <% @likes['data'].each do |like| %>
+    <li><%= like['name'] %> </li>
+  <% end %>
+</ul>
+</p>
 
 </section>
 
@@ -58,16 +65,13 @@
   Hello <%= @me['name'] %>, welcome to the <%= @tab.title %>!
 </h2>
 
-
-
   <%= raw @tab.content %>
 </section>
 
-<script type="text/javascript">
+<section class="span8" id="event">
 
-console.log('<%= @me %>');
 
-</script>
+</section>
 
 
 <!-- <p>
@@ -86,3 +90,10 @@ console.log('<%= @me %>');
 </p> -->
 
 <% end %>
+
+<script type="text/javascript">
+
+console.log(<%= raw @me.to_json %>);
+console.log(<%= raw @likes.to_json %>);
+
+</script>

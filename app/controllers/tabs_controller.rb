@@ -12,7 +12,7 @@ class TabsController < ApplicationController
     # @tab = Tab.first
 
     @rg = RestGraph.new( :app_id => 489815807777705, :secret => "82e850fde7ac14a81c6ab2c64ffee153")
-    @new_rg = RestGraph.new(:access_token => "CAACEdEose0cBAJ1Py3HiBsYnNVCYREpU8KOlCYR8mESKN3oz2CpWcP42XZBr0dsn2jrYKi1H7dMqMsfhvgHDDWTY5UkHYgZB2XnZB2nPpeEhl9ErTZCl9GZB4rCGT2HZCDKqaqJFdDMX5akbtZARKfuOBTeFdrHZA8essNAZCw0CcftnBvDZCgjAuO4GZB6gkA540mz2zqlGzQAkQZDZD")
+    @new_rg = RestGraph.new(:access_token => "CAACEdEose0cBAJacKQWNFUnSIryaRmNrB80oqzpeZAwrKG6oO2Q1Dyg4k3XqwIwRDXZB7MHSw1mptS8uwgGnTf0hqtgzOudl8plitFsdxT1dKWBGeFjkVxppA6ZALkvCZAYlC3sBMsSFIYNO4GHEmVAdknfS5XzcmLMYDYxK3a0lY4JRB4rsmETcbPNA6STUGO1ZBPRME0wZDZD")
     @me = @new_rg.get('me')
     @likes = @new_rg.get('me/likes')
 

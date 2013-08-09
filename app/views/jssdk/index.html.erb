@@ -94,6 +94,11 @@
                   console.log(response);
               } );
 
+              FB.api('551434674894187', 'get', function (response) {
+                  var fb_event = response;
+                  console.log('Event: ' + fb_event);
+              } );
+
               FB.api('/me/likes', function (response) {
                   console.log(response);
                   var likes = response['data'];
@@ -170,4 +175,3 @@
 
 <button id="getStarted" >Log in</button>
 <button id="logOut" >Logout</button>
-
