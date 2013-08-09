@@ -1,10 +1,13 @@
+<p id="fb_app_id" class="hidden"><%= ENV["FB_APP_ID"] %></p>
 <div id="fb-root"></div>
 <script type="text/javascript" href="https://raw.github.com/diulama/js-facebook-signed-request/master/fb_signed_request.js"></script>
 <script>
+var fb_app_id = $('#fb_app_id').text();
+console.log('this: ' + fb_app_id); 
   window.fbAsyncInit = function() {
     // init the FB JS SDK
     FB.init({
-      appId      : "<%= ENV['FB_APP_ID'] %>",                        // App ID from the app dashboard
+      appId      : fb_app_id,                        // App ID from the app dashboard
       channelUrl : '//www.radiant-island-4482.herokuapp.com/channel.html', // Channel file for x-domain comms
       status     : true,                                 // Check Facebook Login status
       xfbml      : true                                  // Look for social plugins on the page
