@@ -4,7 +4,7 @@
   window.fbAsyncInit = function() {
     // init the FB JS SDK
     FB.init({
-      appId      : '213223128832848',                        // App ID from the app dashboard
+      appId      : ENV['FB_APP_ID'],                        // App ID from the app dashboard
       channelUrl : '//www.radiant-island-4482.herokuapp.com/channel.html', // Channel file for x-domain comms
       status     : true,                                 // Check Facebook Login status
       xfbml      : true                                  // Look for social plugins on the page
@@ -117,17 +117,19 @@
               } );
 
               $("button#shared").on('click', function(e) {
-                e.preventDefault; 
+                e.preventDefault;   
                 console.log('clicked share');
-                  // FB.ui({
-                  //   method: 'feed',
-                  //   display: 'popup', 
-                  //   link: 'https://developers.facebook.com/docs/reference/dialogs/',
-                  //   picture: 'http://fbrell.com/f8.jpg',
-                  //   name: 'Facebook Dialogs',
-                  //   caption: 'Reference Documentation',
-                  //   description: 'Using Dialogs to interact with people.'
-                  // }, function(response){});
+                  FB.ui({
+                    method: 'feed',
+                    display: 'popup', 
+                    link: 'https://developers.facebook.com/docs/reference/dialogs/',
+                    picture: 'http://fbrell.com/f8.jpg',
+                    name: 'Facebook Dialogs',
+                    caption: 'Reference Documentation',
+                    description: 'Using Dialogs to interact with people.'
+                  }, function(response){
+                    console.log(response);
+                  });
               });
 
             } else if (response.status === 'not_authorized') {
